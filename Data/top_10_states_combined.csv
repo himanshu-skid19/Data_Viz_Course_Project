@@ -1,0 +1,141 @@
+year,rank,state,visitors,type,state_year_type,period
+2014,1,Tamil Nadu,327555233,Domestic,Tamil Nadu_2014_Domestic,Pre-COVID
+2014,2,Uttar Pradesh,182820108,Domestic,Uttar Pradesh_2014_Domestic,Pre-COVID
+2014,3,Karnataka,118283220,Domestic,Karnataka_2014_Domestic,Pre-COVID
+2014,4,Maharashtra,94127124,Domestic,Maharashtra_2014_Domestic,Pre-COVID
+2014,5,Andhra Pradesh,93306974,Domestic,Andhra Pradesh_2014_Domestic,Pre-COVID
+2014,6,Telengana,72399113,Domestic,Telengana_2014_Domestic,Pre-COVID
+2014,7,Madhya Pradesh,63614525,Domestic,Madhya Pradesh_2014_Domestic,Pre-COVID
+2014,8,West Bengal,49029590,Domestic,West Bengal_2014_Domestic,Pre-COVID
+2014,9,Jharkhand,33427144,Domestic,Jharkhand_2014_Domestic,Pre-COVID
+2014,10,Rajasthan,33076491,Domestic,Rajasthan_2014_Domestic,Pre-COVID
+2015,1,Tamil Nadu,333459047,Domestic,Tamil Nadu_2015_Domestic,Pre-COVID
+2015,2,Uttar Pradesh,204888457,Domestic,Uttar Pradesh_2015_Domestic,Pre-COVID
+2015,3,Andhra Pradesh,121591054,Domestic,Andhra Pradesh_2015_Domestic,Pre-COVID
+2015,4,Karnataka,119863942,Domestic,Karnataka_2015_Domestic,Pre-COVID
+2015,5,Maharashtra,103403934,Domestic,Maharashtra_2015_Domestic,Pre-COVID
+2015,6,Telengana,94516316,Domestic,Telengana_2015_Domestic,Pre-COVID
+2015,7,Madhya Pradesh,77975738,Domestic,Madhya Pradesh_2015_Domestic,Pre-COVID
+2015,8,West Bengal,70193450,Domestic,West Bengal_2015_Domestic,Pre-COVID
+2015,9,Gujarat,36288463,Domestic,Gujarat_2015_Domestic,Pre-COVID
+2015,10,Rajasthan,35187573,Domestic,Rajasthan_2015_Domestic,Pre-COVID
+2016,1,Tamil Nadu,343812413,Domestic,Tamil Nadu_2016_Domestic,Pre-COVID
+2016,2,Uttar Pradesh,211707090,Domestic,Uttar Pradesh_2016_Domestic,Pre-COVID
+2016,3,Andhra Pradesh,153163352,Domestic,Andhra Pradesh_2016_Domestic,Pre-COVID
+2016,4,Madhya Pradesh,150490339,Domestic,Madhya Pradesh_2016_Domestic,Pre-COVID
+2016,5,Karnataka,129762600,Domestic,Karnataka_2016_Domestic,Pre-COVID
+2016,6,Maharashtra,116515801,Domestic,Maharashtra_2016_Domestic,Pre-COVID
+2016,7,Telengana,95160830,Domestic,Telengana_2016_Domestic,Pre-COVID
+2016,8,West Bengal,74460250,Domestic,West Bengal_2016_Domestic,Pre-COVID
+2016,9,Gujarat,42252909,Domestic,Gujarat_2016_Domestic,Pre-COVID
+2016,10,Rajasthan,41495115,Domestic,Rajasthan_2016_Domestic,Pre-COVID
+2017,1,Tamil Nadu,385909376,Domestic,Tamil Nadu_2017_Domestic,Pre-COVID
+2017,2,Uttar Pradesh,233977619,Domestic,Uttar Pradesh_2017_Domestic,Pre-COVID
+2017,3,Karnataka,179980191,Domestic,Karnataka_2017_Domestic,Pre-COVID
+2017,4,Andhra Pradesh,165433898,Domestic,Andhra Pradesh_2017_Domestic,Pre-COVID
+2017,5,Maharashtra,119191539,Domestic,Maharashtra_2017_Domestic,Pre-COVID
+2017,6,Telengana,85266596,Domestic,Telengana_2017_Domestic,Pre-COVID
+2017,7,West Bengal,79687645,Domestic,West Bengal_2017_Domestic,Pre-COVID
+2017,8,Madhya Pradesh,78038522,Domestic,Madhya Pradesh_2017_Domestic,Pre-COVID
+2017,9,Gujarat,48343121,Domestic,Gujarat_2017_Domestic,Pre-COVID
+2017,10,Rajasthan,45916573,Domestic,Rajasthan_2017_Domestic,Pre-COVID
+2018,1,Tamil Nadu,385909376,Domestic,Tamil Nadu_2018_Domestic,Pre-COVID
+2018,2,Uttar Pradesh,285079848,Domestic,Uttar Pradesh_2018_Domestic,Pre-COVID
+2018,3,Karnataka,214306456,Domestic,Karnataka_2018_Domestic,Pre-COVID
+2018,4,Andhra Pradesh,194767874,Domestic,Andhra Pradesh_2018_Domestic,Pre-COVID
+2018,5,Maharashtra,119191539,Domestic,Maharashtra_2018_Domestic,Pre-COVID
+2018,6,Telengana,92878329,Domestic,Telengana_2018_Domestic,Pre-COVID
+2018,7,West Bengal,85657365,Domestic,West Bengal_2018_Domestic,Pre-COVID
+2018,8,Madhya Pradesh,83969799,Domestic,Madhya Pradesh_2018_Domestic,Pre-COVID
+2018,9,Gujarat,54369873,Domestic,Gujarat_2018_Domestic,Pre-COVID
+2018,10,Rajasthan,50235643,Domestic,Rajasthan_2018_Domestic,Pre-COVID
+2019,1,Uttar Pradesh,535855162,Domestic,Uttar Pradesh_2019_Domestic,Pre-COVID
+2019,2,Tamil Nadu,494865257,Domestic,Tamil Nadu_2019_Domestic,Pre-COVID
+2019,3,Andhra Pradesh,237051508,Domestic,Andhra Pradesh_2019_Domestic,Pre-COVID
+2019,4,Karnataka,227934714,Domestic,Karnataka_2019_Domestic,Pre-COVID
+2019,5,Maharashtra,149294703,Domestic,Maharashtra_2019_Domestic,Pre-COVID
+2019,6,West Bengal,92366025,Domestic,West Bengal_2019_Domestic,Pre-COVID
+2019,7,Madhya Pradesh,88707139,Domestic,Madhya Pradesh_2019_Domestic,Pre-COVID
+2019,8,Telengana,83035894,Domestic,Telengana_2019_Domestic,Pre-COVID
+2019,9,Gujarat,58864661,Domestic,Gujarat_2019_Domestic,Pre-COVID
+2019,10,Rajasthan,52220431,Domestic,Rajasthan_2019_Domestic,Pre-COVID
+2020,1,Tamil Nadu,140651241,Domestic,Tamil Nadu_2020_Domestic,COVID
+2020,2,Uttar Pradesh,86122293,Domestic,Uttar Pradesh_2020_Domestic,COVID
+2020,3,Karnataka,77453339,Domestic,Karnataka_2020_Domestic,COVID
+2020,4,Andhra Pradesh,70828590,Domestic,Andhra Pradesh_2020_Domestic,COVID
+2020,5,Telengana,39997001,Domestic,Telengana_2020_Domestic,COVID
+2020,6,Maharashtra,39234591,Domestic,Maharashtra_2020_Domestic,COVID
+2020,7,West Bengal,28841732,Domestic,West Bengal_2020_Domestic,COVID
+2020,8,Madhya Pradesh,23519632,Domestic,Madhya Pradesh_2020_Domestic,COVID
+2020,9,Gujarat,19464517,Domestic,Gujarat_2020_Domestic,COVID
+2020,10,Punjab,16692197,Domestic,Punjab_2020_Domestic,COVID
+2014,1,Tamil Nadu,4657630,Foreign,Tamil Nadu_2014_Foreign,Pre-COVID
+2014,2,Maharashtra,4389098,Foreign,Maharashtra_2014_Foreign,Pre-COVID
+2014,3,Uttar Pradesh,2909735,Foreign,Uttar Pradesh_2014_Foreign,Pre-COVID
+2014,4,Delhi,2319046,Foreign,Delhi_2014_Foreign,Pre-COVID
+2014,5,Rajasthan,1525574,Foreign,Rajasthan_2014_Foreign,Pre-COVID
+2014,6,West Bengal,1375740,Foreign,West Bengal_2014_Foreign,Pre-COVID
+2014,7,Kerala,923366,Foreign,Kerala_2014_Foreign,Pre-COVID
+2014,8,Bihar,829508,Foreign,Bihar_2014_Foreign,Pre-COVID
+2014,9,Karnataka,561870,Foreign,Karnataka_2014_Foreign,Pre-COVID
+2014,10,Harayana,547367,Foreign,Harayana_2014_Foreign,Pre-COVID
+2015,1,Tamil Nadu,4684707,Foreign,Tamil Nadu_2015_Foreign,Pre-COVID
+2015,2,Maharashtra,4408916,Foreign,Maharashtra_2015_Foreign,Pre-COVID
+2015,3,Uttar Pradesh,3104062,Foreign,Uttar Pradesh_2015_Foreign,Pre-COVID
+2015,4,Delhi,2379169,Foreign,Delhi_2015_Foreign,Pre-COVID
+2015,5,West Bengal,1489500,Foreign,West Bengal_2015_Foreign,Pre-COVID
+2015,6,Rajasthan,1475311,Foreign,Rajasthan_2015_Foreign,Pre-COVID
+2015,7,Kerala,977479,Foreign,Kerala_2015_Foreign,Pre-COVID
+2015,8,Bihar,923737,Foreign,Bihar_2015_Foreign,Pre-COVID
+2015,9,Karnataka,636502,Foreign,Karnataka_2015_Foreign,Pre-COVID
+2015,10,Goa,541480,Foreign,Goa_2015_Foreign,Pre-COVID
+2016,1,Tamil Nadu,4721978,Foreign,Tamil Nadu_2016_Foreign,Pre-COVID
+2016,2,Maharashtra,4670048,Foreign,Maharashtra_2016_Foreign,Pre-COVID
+2016,3,Uttar Pradesh,3156812,Foreign,Uttar Pradesh_2016_Foreign,Pre-COVID
+2016,4,Delhi,2520083,Foreign,Delhi_2016_Foreign,Pre-COVID
+2016,5,West Bengal,1528700,Foreign,West Bengal_2016_Foreign,Pre-COVID
+2016,6,Rajasthan,1513729,Foreign,Rajasthan_2016_Foreign,Pre-COVID
+2016,7,Kerala,1038419,Foreign,Kerala_2016_Foreign,Pre-COVID
+2016,8,Bihar,1010531,Foreign,Bihar_2016_Foreign,Pre-COVID
+2016,9,Goa,680683,Foreign,Goa_2016_Foreign,Pre-COVID
+2016,10,Punjab,659736,Foreign,Punjab_2016_Foreign,Pre-COVID
+2017,1,Maharashtra,5078514,Foreign,Maharashtra_2017_Foreign,Pre-COVID
+2017,2,Tamil Nadu,4860455,Foreign,Tamil Nadu_2017_Foreign,Pre-COVID
+2017,3,Uttar Pradesh,3556204,Foreign,Uttar Pradesh_2017_Foreign,Pre-COVID
+2017,4,Delhi,2740502,Foreign,Delhi_2017_Foreign,Pre-COVID
+2017,5,Rajasthan,1609963,Foreign,Rajasthan_2017_Foreign,Pre-COVID
+2017,6,West Bengal,1574915,Foreign,West Bengal_2017_Foreign,Pre-COVID
+2017,7,Punjab,1108635,Foreign,Punjab_2017_Foreign,Pre-COVID
+2017,8,Kerala,1091870,Foreign,Kerala_2017_Foreign,Pre-COVID
+2017,9,Bihar,1082705,Foreign,Bihar_2017_Foreign,Pre-COVID
+2017,10,Goa,842220,Foreign,Goa_2017_Foreign,Pre-COVID
+2018,1,Tamil Nadu,6074345,Foreign,Tamil Nadu_2018_Foreign,Pre-COVID
+2018,2,Maharashtra,5078514,Foreign,Maharashtra_2018_Foreign,Pre-COVID
+2018,3,Uttar Pradesh,3780752,Foreign,Uttar Pradesh_2018_Foreign,Pre-COVID
+2018,4,Delhi,2740502,Foreign,Delhi_2018_Foreign,Pre-COVID
+2018,5,Rajasthan,1754348,Foreign,Rajasthan_2018_Foreign,Pre-COVID
+2018,6,West Bengal,1617105,Foreign,West Bengal_2018_Foreign,Pre-COVID
+2018,7,Punjab,1200969,Foreign,Punjab_2018_Foreign,Pre-COVID
+2018,8,Kerala,1096407,Foreign,Kerala_2018_Foreign,Pre-COVID
+2018,9,Bihar,1087971,Foreign,Bihar_2018_Foreign,Pre-COVID
+2018,10,Goa,933841,Foreign,Goa_2018_Foreign,Pre-COVID
+2019,1,Tamil Nadu,6866327,Foreign,Tamil Nadu_2019_Foreign,Pre-COVID
+2019,2,Maharashtra,5528704,Foreign,Maharashtra_2019_Foreign,Pre-COVID
+2019,3,Uttar Pradesh,4745181,Foreign,Uttar Pradesh_2019_Foreign,Pre-COVID
+2019,4,Delhi,2983436,Foreign,Delhi_2019_Foreign,Pre-COVID
+2019,5,West Bengal,1656145,Foreign,West Bengal_2019_Foreign,Pre-COVID
+2019,6,Rajasthan,1605560,Foreign,Rajasthan_2019_Foreign,Pre-COVID
+2019,7,Kerala,1189771,Foreign,Kerala_2019_Foreign,Pre-COVID
+2019,8,Punjab,1101343,Foreign,Punjab_2019_Foreign,Pre-COVID
+2019,9,Bihar,1093141,Foreign,Bihar_2019_Foreign,Pre-COVID
+2019,10,Goa,937113,Foreign,Goa_2019_Foreign,Pre-COVID
+2020,1,Maharashtra,1262409,Foreign,Maharashtra_2020_Foreign,COVID
+2020,2,Tamil Nadu,1228323,Foreign,Tamil Nadu_2020_Foreign,COVID
+2020,3,Uttar Pradesh,890932,Foreign,Uttar Pradesh_2020_Foreign,COVID
+2020,4,Delhi,681230,Foreign,Delhi_2020_Foreign,COVID
+2020,5,West Bengal,463285,Foreign,West Bengal_2020_Foreign,COVID
+2020,6,Rajasthan,446457,Foreign,Rajasthan_2020_Foreign,COVID
+2020,7,Punjab,359114,Foreign,Punjab_2020_Foreign,COVID
+2020,8,Kerala,340755,Foreign,Kerala_2020_Foreign,COVID
+2020,9,Bihar,308080,Foreign,Bihar_2020_Foreign,COVID
+2020,10,Goa,302751,Foreign,Goa_2020_Foreign,COVID

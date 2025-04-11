@@ -190,7 +190,15 @@ function Dashboard() {
           />
         </TableFooter>
       </TableContainer> */}
-
+      <ChartCard title="Top Countries wtih Foreign Tourist Arrivals"  >
+          <div className="relative w-full h-96"> {/* Fixed height container */}
+            <FlourishChart 
+              key={`flourish-chart-${Date.now()}`} // Add a unique key to force remount if needed
+              src="visualisation/22473410" 
+              className="w-full h-full" 
+            />
+          </div>
+        </ChartCard>
       <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
       <ChartCard title="Monthly Tourist Arrivals in India"  >
