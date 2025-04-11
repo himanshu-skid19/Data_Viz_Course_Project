@@ -59,6 +59,9 @@ const FlourishChart = dynamic(() => import('../../components/FlourishChart'), {
   ssr: false,
 });
 
+type DemographicsFilterType =  'gender' | 'age' | 'mode';
+
+
 function Dashboard() {
   Chart.register(
     ArcElement,
@@ -70,6 +73,28 @@ function Dashboard() {
     Tooltip,
     Legend
   )
+
+  const [demographicsFilter, setDemographicsFilter] = useState<DemographicsFilterType>('gender');
+  
+  // Map filter types to Flourish visualization IDs
+  const visualizationIds: Record<DemographicsFilterType, string> = {// Your original visualization
+    gender: '22596350', // Example - create a gender breakdown visualization
+    age: '22596141', // Using your existing monthly arrivals chart
+    mode: '22596471', // Using your existing state rankings chart
+
+  };
+
+  // Chart titles based on filter
+  const chartTitles: Record<DemographicsFilterType, string> = {
+    gender: 'Gender Distribution of Foreign Tourists',
+    age: 'Age Wise Distribution of Tourist Arrivals',
+    mode: 'Distribution of Tourists based on Mode of Travel',
+  };
+
+  // Handle filter change
+  const handleDemographicsFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setDemographicsFilter(e.target.value as DemographicsFilterType);
+  };
 
   const [page, setPage] = useState(1)
   const [data, setData] = useState<ITableData[]>([])
@@ -190,6 +215,36 @@ function Dashboard() {
           />
         </TableFooter>
       </TableContainer> */}
+      <PageTitle>Demographics Analysis</PageTitle>
+      
+      {/* Filter dropdown */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
+          Select View:
+        </label>
+        <select
+          className="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+          value={demographicsFilter}
+          onChange={handleDemographicsFilterChange}
+        >
+
+          <option value="gender">Gender Distribution</option>
+          <option value="age">Age Wise Distribution</option>
+          <option value="mode">Distribution of Tourists by mode of travel</option>
+
+        </select>
+      </div>
+      
+      {/* Chart card */}
+      <ChartCard title={chartTitles[demographicsFilter]}>
+        <div className="relative w-full h-96">
+          <FlourishChart 
+            key={`flourish-chart-${visualizationIds[demographicsFilter]}`}
+            src={`visualisation/${visualizationIds[demographicsFilter]}`}
+            className="w-full h-full" 
+          />
+        </div>
+      </ChartCard>
       <ChartCard title="Top Countries wtih Foreign Tourist Arrivals"  >
           <div className="relative w-full h-96"> {/* Fixed height container */}
             <FlourishChart 
