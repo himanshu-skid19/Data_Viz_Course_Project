@@ -57,7 +57,7 @@ export {
   OutlineCogIcon,
   OutlineLogoutIcon,
 }
-
+export { ChevronLeftIcon, ChevronRightIcon } from './ChevronIcons';
 interface IIcon{
   icon: string
   [key: string]: string | undefined
