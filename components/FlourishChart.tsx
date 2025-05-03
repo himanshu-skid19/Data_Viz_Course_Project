@@ -1,5 +1,6 @@
 // components/FlourishChart.tsx 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { WindmillContext } from '@roketid/windmill-react-ui';
 
 // Extend window interface to add Flourish properties
 declare global {
@@ -21,6 +22,9 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const { mode } = useContext(WindmillContext);
+  const isDarkMode = mode === 'dark';
   
   // Normalize the src to ensure consistent formatting
   const normalizedSrc = src.includes('visualisation/') 
@@ -38,6 +42,12 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
     const flourishDiv = containerRef.current.querySelector('.flourish-embed');
     if (flourishDiv) {
       flourishDiv.setAttribute('data-src', normalizedSrc);
+      
+      // Add additional attributes to adjust iframe sandbox settings
+      flourishDiv.setAttribute('data-sandbox', 'allow-scripts allow-popups allow-top-navigation-by-user-activation allow-forms');
+      
+      // Set theme attribute for Flourish if supported
+      flourishDiv.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
     }
     
     // If script is loaded, trigger Flourish reload
@@ -46,6 +56,7 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
       setTimeout(() => {
         if (window.Flourish && typeof window.Flourish.reload === 'function') {
           window.Flourish.reload();
+          setTimeout(() => setIsLoading(false), 500);
         }
       }, 100);
     }
@@ -63,10 +74,12 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
         script.onload = () => {
           setScriptLoaded(true);
           window.FlourishLoaded = true;
+          setTimeout(() => setIsLoading(false), 500);
         };
         document.body.appendChild(script);
       } else {
         setScriptLoaded(true);
+        setTimeout(() => setIsLoading(false), 500);
       }
     }
   };
@@ -101,6 +114,8 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
 
   // Initialize when component mounts or src changes
   useEffect(() => {
+    setIsLoading(true);
+    
     // Force recreation of the flourish-embed div when src changes
     if (containerRef.current) {
       // Clear the container
@@ -115,6 +130,10 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
       newFlourish.setAttribute('data-src', normalizedSrc);
       newFlourish.setAttribute('data-height', '100%');
       newFlourish.setAttribute('data-width', '100%');
+      // Add sandbox attribute to control iframe security settings
+      newFlourish.setAttribute('data-sandbox', 'allow-scripts allow-popups allow-top-navigation-by-user-activation allow-forms');
+      // Set theme attribute for Flourish if supported
+      newFlourish.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
       
       // Add noscript fallback
       const noscript = document.createElement('noscript');
@@ -131,7 +150,7 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
       // Always initialize, not just when visible
       setTimeout(initializeFlourishVisualization, 0);
     }
-  }, [normalizedSrc, title]); // Re-run when src or title changes
+  }, [normalizedSrc, title, isDarkMode]); // Re-run when src, title, or theme changes
 
   // Reinitialize when component becomes visible
   useEffect(() => {
@@ -165,7 +184,6 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
       }
     };
     
-    
     window.addEventListener('focus', handleFocus);
     
     return () => {
@@ -174,18 +192,50 @@ const FlourishChart: React.FC<FlourishChartProps> = ({ src, title, className }) 
     };
   }, [isVisible]);
 
+  // Listen for theme changes
   useEffect(() => {
-    // This effect ensures the chart is initialized when the component updates
-    // This helps with route changes and layout shifts
-    const updateTimer = setTimeout(() => {
-      initializeFlourishVisualization();
-    }, 500);
-    
-    return () => clearTimeout(updateTimer);
-  }, []);
+    // Reinitialize visualization when theme changes
+    if (containerRef.current) {
+      const flourishDiv = containerRef.current.querySelector('.flourish-embed');
+      if (flourishDiv) {
+        flourishDiv.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+        initializeFlourishVisualization();
+      }
+    }
+  }, [isDarkMode]);
 
   return (
-    <div ref={containerRef} className={`w-full h-full ${className || ''}`}></div>
+    <div className={`relative w-full h-full ${className || ''}`}>
+      <div 
+        ref={containerRef} 
+        className={`w-full h-full ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}
+      ></div>
+      
+      {isLoading && (
+        <div className={`absolute inset-0 flex items-center justify-center bg-opacity-80 z-10 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+          <div className="flex flex-col items-center">
+            <div className={`w-10 h-10 border-4 border-t-purple-600 border-r-transparent border-b-purple-600 border-l-transparent rounded-full animate-spin`}></div>
+            <p className={`mt-3 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Loading visualization...</p>
+          </div>
+        </div>
+      )}
+      
+      {/* Use styled-jsx for scoped styling */}
+      <style jsx>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+      
+      {/* Use global styles just for the iframe fixes */}
+      <style jsx global>{`
+        .flourish-embed iframe {
+          border: none !important;
+          width: 100% !important;
+          min-height: 400px !important;
+        }
+      `}</style>
+    </div>
   );
 };
 
