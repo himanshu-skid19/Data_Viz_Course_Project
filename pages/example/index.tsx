@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Doughnut, Line } from 'react-chartjs-2'
+import dynamic from 'next/dynamic'
 
 import CTA from 'example/components/CTA'
 import InfoCard from 'example/components/Cards/InfoCard'
@@ -10,7 +11,6 @@ import RoundIcon from 'example/components/RoundIcon'
 import Layout from 'example/containers/Layout'
 import response, { ITableData } from 'utils/demo/tableData'
 import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon } from 'icons'
-import dynamic from 'next/dynamic';
 import {
   TableBody,
   TableContainer,
@@ -43,6 +43,9 @@ import {
   Legend,
 } from 'chart.js'
 
+const BootstrapCarousel = dynamic(() => import('../../components/BootstrapCarousel'), {
+  ssr: false,
+})
 
 interface FlourishChartProps {
   src: string;
@@ -50,17 +53,11 @@ interface FlourishChartProps {
   className?: string;
 }
 
-
-// const FlourishChart = dynamic(() => import('example/components/FlourishChart'), {
-//   ssr: false,
-// });
-// Update import path to go back 2 folders from current location
 const FlourishChart = dynamic(() => import('../../components/FlourishChart'), {
   ssr: false,
 });
 
-type DemographicsFilterType =  'gender' | 'age' | 'mode';
-
+type DemographicsFilterType = 'gender' | 'age' | 'mode';
 
 function Dashboard() {
   Chart.register(
@@ -80,7 +77,6 @@ function Dashboard() {
 
   // Map filter types to Flourish visualization IDs
   const visualizationIds: Record<DemographicsFilterType, string> = {
-    // Make sure to use the FULL path including "visualisation/" prefix
     gender: 'visualisation/22596350',
     age: 'visualisation/22596141',
     mode: 'visualisation/22596471',
@@ -118,6 +114,7 @@ function Dashboard() {
   function onPageChange(p: number) {
     setPage(p)
   }
+  
   // Add this useEffect to monitor filter changes and force rerender
   useEffect(() => {
     console.log("Filter changed to:", demographicsFilter);
@@ -142,103 +139,14 @@ function Dashboard() {
     <Layout>
       <PageTitle>Tourism Analysis Dashboard</PageTitle>
 
-      <CTA />
-
-      {/* <!-- Cards --> */}
-      <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-        <InfoCard title="Total clients" value="6389">
-          {/* @ts-ignore */}
-          <RoundIcon
-            icon={PeopleIcon}
-            iconColorClass="text-orange-500 dark:text-orange-100"
-            bgColorClass="bg-orange-100 dark:bg-orange-500"
-            className="mr-4"
-          />
-        </InfoCard>
-
-        <InfoCard title="Account balance" value="$ 46,760.89">
-          {/* @ts-ignore */}
-          <RoundIcon
-            icon={MoneyIcon}
-            iconColorClass="text-green-500 dark:text-green-100"
-            bgColorClass="bg-green-100 dark:bg-green-500"
-            className="mr-4"
-          />
-        </InfoCard>
-
-        <InfoCard title="New sales" value="376">
-          {/* @ts-ignore */}
-          <RoundIcon
-            icon={CartIcon}
-            iconColorClass="text-blue-500 dark:text-blue-100"
-            bgColorClass="bg-blue-100 dark:bg-blue-500"
-            className="mr-4"
-          />
-        </InfoCard>
-
-        <InfoCard title="Pending contacts" value="35">
-          {/* @ts-ignore */}
-          <RoundIcon
-            icon={ChatIcon}
-            iconColorClass="text-teal-500 dark:text-teal-100"
-            bgColorClass="bg-teal-100 dark:bg-teal-500"
-            className="mr-4"
-          />
-        </InfoCard>
+      {/* Added Bootstrap Carousel */}
+      <div className="mb-8">
+        <BootstrapCarousel />
       </div>
 
-      {/* <TableContainer>
-        <Table>
-          <TableHeader>
-            <tr>
-              <TableCell>Client</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Date</TableCell>
-            </tr>
-          </TableHeader>
-          <TableBody>
-            {data.map((user, i) => (
-              <TableRow key={i}>
-                <TableCell>
-                  <div className="flex items-center text-sm">
-                    <Avatar
-                      className="hidden mr-3 md:block"
-                      src={user.avatar}
-                      alt="User image"
-                    />
-                    <div>
-                      <p className="font-semibold">{user.name}</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        {user.job}
-                      </p>
-                    </div>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm">$ {user.amount}</span>
-                </TableCell>
-                <TableCell>
-                  <Badge type={user.status}>{user.status}</Badge>
-                </TableCell>
-                <TableCell>
-                  <span className="text-sm">
-                    {new Date(user.date).toLocaleDateString()}
-                  </span>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <TableFooter>
-          <Pagination
-            totalResults={totalResults}
-            resultsPerPage={resultsPerPage}
-            label="Table navigation"
-            onChange={onPageChange}
-          />
-        </TableFooter>
-      </TableContainer> */}
+      <CTA />
+
+    
      <PageTitle>Demographics Analysis</PageTitle>
       
       {/* Filter dropdown */}
@@ -258,61 +166,61 @@ function Dashboard() {
       </div>
 
       {showChart && (
-  <div key={`chart-container-${chartKey}`}>
-    {demographicsFilter === 'gender' && (
-      <ChartCard title={chartTitles.gender}>
-        <div className="relative w-full h-96">
-          <FlourishChart 
-            key={`flourish-chart-gender-${chartKey}`}
-            src="visualisation/22596350"
-            title={chartTitles.gender}
-            className="w-full h-full" 
-          />
-        </div>
-      </ChartCard>
-    )}
+        <div key={`chart-container-${chartKey}`}>
+          {demographicsFilter === 'gender' && (
+            <ChartCard title={chartTitles.gender}>
+              <div className="relative w-full h-96">
+                <FlourishChart 
+                  key={`flourish-chart-gender-${chartKey}`}
+                  src="visualisation/22596350"
+                  title={chartTitles.gender}
+                  className="w-full h-full" 
+                />
+              </div>
+            </ChartCard>
+          )}
 
-    {demographicsFilter === 'age' && (
-      <ChartCard title={chartTitles.age}>
-        <div className="relative w-full h-96">
-          <FlourishChart 
-            key={`flourish-chart-age-${chartKey}`}
-            src="visualisation/22596141"
-            title={chartTitles.age}
-            className="w-full h-full" 
-          />
-        </div>
-      </ChartCard>
-    )}
+          {demographicsFilter === 'age' && (
+            <ChartCard title={chartTitles.age}>
+              <div className="relative w-full h-96">
+                <FlourishChart 
+                  key={`flourish-chart-age-${chartKey}`}
+                  src="visualisation/22596141"
+                  title={chartTitles.age}
+                  className="w-full h-full" 
+                />
+              </div>
+            </ChartCard>
+          )}
 
-    {demographicsFilter === 'mode' && (
-      <ChartCard title={chartTitles.mode}>
-        <div className="relative w-full h-96">
-          <FlourishChart 
-            key={`flourish-chart-mode-${chartKey}`}
-            src="visualisation/22596471" 
-            title={chartTitles.mode}
-            className="w-full h-full" 
-          />
+          {demographicsFilter === 'mode' && (
+            <ChartCard title={chartTitles.mode}>
+              <div className="relative w-full h-96">
+                <FlourishChart 
+                  key={`flourish-chart-mode-${chartKey}`}
+                  src="visualisation/22596471" 
+                  title={chartTitles.mode}
+                  className="w-full h-full" 
+                />
+              </div>
+            </ChartCard>
+          )}
         </div>
-      </ChartCard>
-    )}
-  </div>
-)}
-{!showChart && (
-  <div className="w-full h-96 flex items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow-md">
-    <div className="text-center">
-      <p className="text-gray-700 dark:text-gray-300">Loading chart...</p>
-      <div className="mt-2 inline-block w-8 h-8 border-4 border-t-purple-500 border-r-transparent border-b-purple-500 border-l-transparent rounded-full animate-spin"></div>
-    </div>
-  </div>
-)}
+      )}
+      {!showChart && (
+        <div className="w-full h-96 flex items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow-md">
+          <div className="text-center">
+            <p className="text-gray-700 dark:text-gray-300">Loading chart...</p>
+            <div className="mt-2 inline-block w-8 h-8 border-4 border-t-purple-500 border-r-transparent border-b-purple-500 border-l-transparent rounded-full animate-spin"></div>
+          </div>
+        </div>
+      )}
       
       {/* Chart */}
-      <ChartCard title="Top Countries wtih Foreign Tourist Arrivals">
+      <ChartCard title="Top Countries with Foreign Tourist Arrivals">
         <div className="relative w-full h-96">
           <FlourishChart 
-            key="flourish-chart-top-countries-22473410" // Stable, descriptive key
+            key="flourish-chart-top-countries-22473410"
             src="visualisation/22473410" 
             className="w-full h-full" 
           />
@@ -320,43 +228,42 @@ function Dashboard() {
       </ChartCard>
       <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
-      <ChartCard title="Monthly Tourist Arrivals in India">
-      <div className="relative w-full h-96">
-        <FlourishChart 
-          key="flourish-chart-monthly-arrivals-22595001" // Stable, descriptive key
-          src="visualisation/22595001" 
-          className="w-full h-full" 
-        />
-      </div>
-    </ChartCard>
-        <ChartCard title="Monthly Foreign Exchange Earnings in USD (in billions) in India">
-      <div className="relative w-full h-96">
-        <FlourishChart 
-          key="flourish-chart-forex-earnings-22595129" // Stable, descriptive key
-          src="visualisation/22595129" 
-          className="w-full h-full" 
-        />
-      </div>
-    </ChartCard>
-         {/* Flourish Chart - full width with proper key prop */}
-         <ChartCard title="Top Country Rankings Based on Foreign Tourist Arrivals">
+        <ChartCard title="Monthly Tourist Arrivals in India">
           <div className="relative w-full h-96">
             <FlourishChart 
-              key="flourish-chart-country-rankings-22592845" // Stable, descriptive key
+              key="flourish-chart-monthly-arrivals-22595001"
+              src="visualisation/22595001" 
+              className="w-full h-full" 
+            />
+          </div>
+        </ChartCard>
+        <ChartCard title="Monthly Foreign Exchange Earnings in USD (in billions) in India">
+          <div className="relative w-full h-96">
+            <FlourishChart 
+              key="flourish-chart-forex-earnings-22595129"
+              src="visualisation/22595129" 
+              className="w-full h-full" 
+            />
+          </div>
+        </ChartCard>
+        <ChartCard title="Top Country Rankings Based on Foreign Tourist Arrivals">
+          <div className="relative w-full h-96">
+            <FlourishChart 
+              key="flourish-chart-country-rankings-22592845"
               src="visualisation/22592845" 
               className="w-full h-full" 
             />
           </div>
         </ChartCard>
         <ChartCard title="Top State Rankings Based on Foreign Tourist Arrivals">
-        <div className="relative w-full h-96">
-          <FlourishChart 
-            key="flourish-chart-state-rankings-22594604" // Stable, descriptive key
-            src="visualisation/22594604" 
-            className="w-full h-full" 
-          />
-        </div>
-      </ChartCard>
+          <div className="relative w-full h-96">
+            <FlourishChart 
+              key="flourish-chart-state-rankings-22594604"
+              src="visualisation/22594604" 
+              className="w-full h-96" 
+            />
+          </div>
+        </ChartCard>
       </div>
     </Layout>
   )

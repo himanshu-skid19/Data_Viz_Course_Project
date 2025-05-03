@@ -1,6 +1,8 @@
 import '../styles/globals.css'
 import 'tailwindcss/tailwind.css';
-
+import { Carousel } from "react-bootstrap";
+//import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "../styles/Bootstrap.module.css";
 import React from 'react'
 import { Windmill } from '@roketid/windmill-react-ui'
 import type { AppProps } from 'next/app'
