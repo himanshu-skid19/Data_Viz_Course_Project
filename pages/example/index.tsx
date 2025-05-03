@@ -75,13 +75,15 @@ function Dashboard() {
   )
 
   const [demographicsFilter, setDemographicsFilter] = useState<DemographicsFilterType>('gender');
-  
-  // Map filter types to Flourish visualization IDs
-  const visualizationIds: Record<DemographicsFilterType, string> = {// Your original visualization
-    gender: '22596350', // Example - create a gender breakdown visualization
-    age: '22596141', // Using your existing monthly arrivals chart
-    mode: '22596471', // Using your existing state rankings chart
+  const [showChart, setShowChart] = useState(true);
+  const [chartKey, setChartKey] = useState(Date.now());
 
+  // Map filter types to Flourish visualization IDs
+  const visualizationIds: Record<DemographicsFilterType, string> = {
+    // Make sure to use the FULL path including "visualisation/" prefix
+    gender: 'visualisation/22596350',
+    age: 'visualisation/22596141',
+    mode: 'visualisation/22596471',
   };
 
   // Chart titles based on filter
@@ -93,9 +95,18 @@ function Dashboard() {
 
   // Handle filter change
   const handleDemographicsFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDemographicsFilter(e.target.value as DemographicsFilterType);
+    const newFilter = e.target.value as DemographicsFilterType;
+    
+    // Hide chart first, then change filter, then show chart
+    setShowChart(false);
+    setTimeout(() => {
+      setDemographicsFilter(newFilter);
+      setChartKey(Date.now()); // Generate new key to force remount
+      setTimeout(() => {
+        setShowChart(true);
+      }, 300);
+    }, 100);
   };
-
   const [page, setPage] = useState(1)
   const [data, setData] = useState<ITableData[]>([])
 
@@ -107,6 +118,19 @@ function Dashboard() {
   function onPageChange(p: number) {
     setPage(p)
   }
+  // Add this useEffect to monitor filter changes and force rerender
+  useEffect(() => {
+    console.log("Filter changed to:", demographicsFilter);
+    
+    // Force Flourish script to reload
+    if (typeof window !== 'undefined' && window.Flourish) {
+      setTimeout(() => {
+        if (typeof window.Flourish.reload === 'function') {
+          window.Flourish.reload();
+        }
+      }, 300);
+    }
+  }, [demographicsFilter]);
 
   // on page change, load new sliced data
   // here you would make another server request for new data
@@ -215,7 +239,7 @@ function Dashboard() {
           />
         </TableFooter>
       </TableContainer> */}
-      <PageTitle>Demographics Analysis</PageTitle>
+     <PageTitle>Demographics Analysis</PageTitle>
       
       {/* Filter dropdown */}
       <div className="mb-4">
@@ -227,72 +251,112 @@ function Dashboard() {
           value={demographicsFilter}
           onChange={handleDemographicsFilterChange}
         >
-
           <option value="gender">Gender Distribution</option>
           <option value="age">Age Wise Distribution</option>
           <option value="mode">Distribution of Tourists by mode of travel</option>
-
         </select>
       </div>
-      
-      {/* Chart card */}
-      <ChartCard title={chartTitles[demographicsFilter]}>
+
+      {showChart && (
+  <div key={`chart-container-${chartKey}`}>
+    {demographicsFilter === 'gender' && (
+      <ChartCard title={chartTitles.gender}>
         <div className="relative w-full h-96">
           <FlourishChart 
-            key={`flourish-chart-${visualizationIds[demographicsFilter]}`}
-            src={`visualisation/${visualizationIds[demographicsFilter]}`}
+            key={`flourish-chart-gender-${chartKey}`}
+            src="visualisation/22596350"
+            title={chartTitles.gender}
             className="w-full h-full" 
           />
         </div>
       </ChartCard>
-      <ChartCard title="Top Countries wtih Foreign Tourist Arrivals"  >
-          <div className="relative w-full h-96"> {/* Fixed height container */}
-            <FlourishChart 
-              key={`flourish-chart-${Date.now()}`} // Add a unique key to force remount if needed
-              src="visualisation/22473410" 
-              className="w-full h-full" 
-            />
-          </div>
-        </ChartCard>
+    )}
+
+    {demographicsFilter === 'age' && (
+      <ChartCard title={chartTitles.age}>
+        <div className="relative w-full h-96">
+          <FlourishChart 
+            key={`flourish-chart-age-${chartKey}`}
+            src="visualisation/22596141"
+            title={chartTitles.age}
+            className="w-full h-full" 
+          />
+        </div>
+      </ChartCard>
+    )}
+
+    {demographicsFilter === 'mode' && (
+      <ChartCard title={chartTitles.mode}>
+        <div className="relative w-full h-96">
+          <FlourishChart 
+            key={`flourish-chart-mode-${chartKey}`}
+            src="visualisation/22596471" 
+            title={chartTitles.mode}
+            className="w-full h-full" 
+          />
+        </div>
+      </ChartCard>
+    )}
+  </div>
+)}
+{!showChart && (
+  <div className="w-full h-96 flex items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow-md">
+    <div className="text-center">
+      <p className="text-gray-700 dark:text-gray-300">Loading chart...</p>
+      <div className="mt-2 inline-block w-8 h-8 border-4 border-t-purple-500 border-r-transparent border-b-purple-500 border-l-transparent rounded-full animate-spin"></div>
+    </div>
+  </div>
+)}
+      
+      {/* Chart */}
+      <ChartCard title="Top Countries wtih Foreign Tourist Arrivals">
+        <div className="relative w-full h-96">
+          <FlourishChart 
+            key="flourish-chart-top-countries-22473410" // Stable, descriptive key
+            src="visualisation/22473410" 
+            className="w-full h-full" 
+          />
+        </div>
+      </ChartCard>
       <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
-      <ChartCard title="Monthly Tourist Arrivals in India"  >
-          <div className="relative w-full h-96"> {/* Fixed height container */}
-            <FlourishChart 
-              key={`flourish-chart-${Date.now()}`} // Add a unique key to force remount if needed
-              src="visualisation/22595001" 
-              className="w-full h-full" 
-            />
-          </div>
-        </ChartCard>
-        <ChartCard title="Monthly Foreign Exchange Earnings in USD (in billions) in India"  >
-          <div className="relative w-full h-96"> {/* Fixed height container */}
-            <FlourishChart 
-              key={`flourish-chart-${Date.now()}`} // Add a unique key to force remount if needed
-              src="visualisation/22595129" 
-              className="w-full h-full" 
-            />
-          </div>
-        </ChartCard>
+      <ChartCard title="Monthly Tourist Arrivals in India">
+      <div className="relative w-full h-96">
+        <FlourishChart 
+          key="flourish-chart-monthly-arrivals-22595001" // Stable, descriptive key
+          src="visualisation/22595001" 
+          className="w-full h-full" 
+        />
+      </div>
+    </ChartCard>
+        <ChartCard title="Monthly Foreign Exchange Earnings in USD (in billions) in India">
+      <div className="relative w-full h-96">
+        <FlourishChart 
+          key="flourish-chart-forex-earnings-22595129" // Stable, descriptive key
+          src="visualisation/22595129" 
+          className="w-full h-full" 
+        />
+      </div>
+    </ChartCard>
          {/* Flourish Chart - full width with proper key prop */}
-         <ChartCard title="Top Country Rankings Based on Foreign Tourist Arrivals"  >
-          <div className="relative w-full h-96"> {/* Fixed height container */}
+         <ChartCard title="Top Country Rankings Based on Foreign Tourist Arrivals">
+          <div className="relative w-full h-96">
             <FlourishChart 
-              key={`flourish-chart-${Date.now()}`} // Add a unique key to force remount if needed
+              key="flourish-chart-country-rankings-22592845" // Stable, descriptive key
               src="visualisation/22592845" 
               className="w-full h-full" 
             />
           </div>
         </ChartCard>
-        <ChartCard title="Top State Rankings Based on Foreign Tourist Arrivals"  >
-          <div className="relative w-full h-96"> {/* Fixed height container */}
-            <FlourishChart 
-              key={`flourish-chart-${Date.now()}`} // Add a unique key to force remount if needed
-              src="visualisation/22594604" 
-              className="w-full h-full" 
-            />
-          </div>
-        </ChartCard>
+        <ChartCard title="Top State Rankings Based on Foreign Tourist Arrivals">
+        <div className="relative w-full h-96">
+          <FlourishChart 
+            key="flourish-chart-state-rankings-22594604" // Stable, descriptive key
+            src="visualisation/22594604" 
+            className="w-full h-full" 
+          />
+        </div>
+      </ChartCard>
       </div>
     </Layout>
   )

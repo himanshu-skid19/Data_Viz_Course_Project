@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: false,
+  //reactStrictMode: false,
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+  reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
