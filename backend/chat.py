@@ -21,6 +21,10 @@ import Stemmer
 import qdrant_client
 # from llama_index.vector_stores.qdrant import QdrantVectorStore
 import faiss
+from dotenv import load_dotenv  # Add this import
+
+# Load environment variables from .env file
+load_dotenv()  # Add this line
 
 
 d = 1536
@@ -33,8 +37,8 @@ else:
     query_str = "hey i want to travel to Vancouver, tell me something abou tit"
 
 # API keys and configuration
-GOOGLE_API_KEY = "AIzaSyASJQghVuVjgnLkRduL0YB6eh6hb2ZUhuA"
-os.environ["OPENAI_API_KEY"] = "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"
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 from llama_index.embeddings.openai import OpenAIEmbedding
 embed_model = OpenAIEmbedding(model="text-embedding-3-small", embed_batch_size=10)

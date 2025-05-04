@@ -1,0 +1,201 @@
+/* 
+  bootstrap-isolation.css
+  This file creates a scoped environment for Bootstrap components
+  that prevents them from affecting the rest of your application
+*/
+
+/* Create an isolation container */
+.bootstrap-isolated {
+    /* Reset all properties to initial values */
+    all: initial;
+    
+    /* Then establish a new stacking context and formatting context */
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    
+    /* Set font properties */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #212529;
+    
+    /* Fix Bootstrap carousel controls */
+    --bs-carousel-control-color: #fff;
+    --bs-carousel-control-width: 15%;
+    --bs-carousel-control-opacity: 0.5;
+    --bs-carousel-control-hover-opacity: 0.9;
+    --bs-carousel-indicator-width: 10px;
+    --bs-carousel-indicator-height: 10px;
+    --bs-carousel-indicator-active-bg: #fff;
+  }
+  
+  /* Fix the carousel specifically */
+  .bootstrap-isolated .carousel {
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .bootstrap-isolated .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .bootstrap-isolated .carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease-in-out;
+  }
+  
+  .bootstrap-isolated .carousel-item.active,
+  .bootstrap-isolated .carousel-item-next,
+  .bootstrap-isolated .carousel-item-prev {
+    display: block;
+  }
+  
+  .bootstrap-isolated .carousel-control-prev,
+  .bootstrap-isolated .carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    color: #fff;
+    text-align: center;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    z-index: 20;
+  }
+  
+  .bootstrap-isolated .carousel-control-prev:hover,
+  .bootstrap-isolated .carousel-control-next:hover {
+    opacity: 0.9;
+  }
+  
+  .bootstrap-isolated .carousel-control-prev {
+    left: 0;
+  }
+  
+  .bootstrap-isolated .carousel-control-next {
+    right: 0;
+  }
+  
+  .bootstrap-isolated .carousel-control-prev-icon,
+  .bootstrap-isolated .carousel-control-next-icon {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 100%;
+  }
+  
+  .bootstrap-isolated .carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0 15% 1rem;
+    list-style: none;
+  }
+  
+  .bootstrap-isolated .carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    margin: 0 3px;
+    cursor: pointer;
+  }
+  
+  .bootstrap-isolated .carousel-indicators .active {
+    opacity: 1;
+  }
+  
+  .bootstrap-isolated .carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 1.25rem;
+    left: 15%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* Fix Bootstrap buttons */
+  .bootstrap-isolated .btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .bootstrap-isolated .btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .bootstrap-isolated .btn-danger:hover {
+    color: #fff;
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+  }
+  
+  /* Fix images inside Bootstrap components */
+  .bootstrap-isolated img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+  
+  /* Style for custom carousel */
+  .bootstrap-isolated .custom-carousel-item {
+    height: 500px;
+  }
+  
+  .bootstrap-isolated .custom-carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .bootstrap-isolated .custom-carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    bottom: 40px;
+    max-width: 80%;
+    margin: 0 auto;
+    left: 10%;
+    right: 10%;
+  }
