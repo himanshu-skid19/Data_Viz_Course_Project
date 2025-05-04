@@ -1,25 +1,35 @@
-import React from 'react'
-import PageTitle from 'example/components/Typography/PageTitle'
-import Layout from 'example/containers/Layout'
+// components/CanvaEmbed.tsx
+import React from 'react';
 
-// Either import the CanvaEmbed component
-// import CanvaEmbed from '../../components/CanvaEmbed'
+interface CanvaEmbedProps {
+  designId: string;
+  designViewId: string;
+  title?: string;
+  author?: string;
+  aspectRatioPercent?: number;
+  className?: string;
+  showAttribution?: boolean;
+}
 
-// Or define it inline if you haven't created the component yet
-const CanvaEmbed = ({ 
-  designId, 
-  designViewId, 
+const CanvaEmbed: React.FC<CanvaEmbedProps> = ({
+  designId,
+  designViewId,
   title = 'Canva Design',
   author = '',
-  aspectRatioPercent = 250,
-  showAttribution = true 
+  aspectRatioPercent = 250, // Default to 250% as in the example
+  className = '',
+  showAttribution = true,
 }) => {
+  // Construct the embed URL
   const embedUrl = `https://www.canva.com/design/${designId}/${designViewId}/view?embed`;
+  
+  // Construct the attribution URL
   const attributionUrl = `https://www.canva.com/design/${designId}/${designViewId}/view?utm_content=${designId}&utm_campaign=designshare&utm_medium=embeds&utm_source=link`;
 
   return (
     <>
       <div 
+        className={`canva-embed-container ${className}`}
         style={{
           position: 'relative',
           width: '100%',
@@ -73,22 +83,4 @@ const CanvaEmbed = ({
   );
 };
 
-function Cards() {
-  return (
-    <Layout>
-      <PageTitle>Canva Infographic</PageTitle>
-
-      {/* Canva Embed */}
-      <CanvaEmbed
-        designId="DAGmcMCk_C0"
-        designViewId="mdcNmv2t2mVypvC54mSIsw"
-        title="Brown and Cream Scrapbook Ancient History Infographic"
-        author="Rishita Agarwal"
-        aspectRatioPercent={250}
-        showAttribution={true}
-      />
-    </Layout>
-  )
-}
-
-export default Cards
+export default CanvaEmbed;

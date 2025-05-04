@@ -41,9 +41,9 @@ const routes: IRoute[] = [
     name: 'Cards',
   },
   {
-    path: '/example/charts',
+    path: '/example/infogram',
     icon: 'ChartsIcon',
-    name: 'Charts',
+    name: 'Infogram',
   },
   {
     path: '/example/buttons',
