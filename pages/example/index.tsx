@@ -133,7 +133,7 @@ function Dashboard() {
       </ChartCard>
       
       {/* Other Charts */}
-      <ChartCard title="Top Countries with Foreign Tourist Arrivals">
+      <ChartCard title="Foreign Tourist Arrivals in India">
         <div className="relative w-full h-96">
           <IframeFlourishChart 
             src="22473410" 

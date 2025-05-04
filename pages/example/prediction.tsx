@@ -322,7 +322,7 @@ const TourismPredictionsPage: NextPage = () => {
             </div>
           </ChartCard>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-1 gap-6 mb-8">
             <Card>
               <CardBody>
                 <h3 className="text-lg font-semibold text-green-600 dark:text-green-400 mb-2">Key Insights</h3>
@@ -355,43 +355,6 @@ const TourismPredictionsPage: NextPage = () => {
               </CardBody>
             </Card>
 
-            <Card>
-              <CardBody>
-                <h3 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2">Confidence Analysis</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-3">
-                  The confidence in our forecasts varies by time horizon:
-                </p>
-                <div className="space-y-3">
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Short-term (2024-2025)</span>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">High Confidence</span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div className="bg-green-600 h-2 rounded-full" style={{ width: '90%' }}></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Medium-term (2026-2027)</span>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Moderate Confidence</span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div className="bg-yellow-500 h-2 rounded-full" style={{ width: '70%' }}></div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Long-term (2028)</span>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Lower Confidence</span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div className="bg-orange-500 h-2 rounded-full" style={{ width: '50%' }}></div>
-                    </div>
-                  </div>
-                </div>
-              </CardBody>
-            </Card>
           </div>
 
           <Card className="mb-8">
