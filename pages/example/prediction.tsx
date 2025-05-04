@@ -100,17 +100,7 @@ const TourismPredictionsPage: NextPage = () => {
             </CardBody>
           </Card>
 
-          <ChartCard title="Tourism FEE Growth and Forecast (2001-2028)">
-            <div className="relative w-full h-96">
-              <FlourishChart 
-                key={`overview-chart-${chartKey}`}
-                src="22985122"
-              />
-            </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 italic text-center mt-2">
-              Source: Ministry of Tourism, Government of India. Visualization powered by Flourish.
-            </div>
-          </ChartCard>
+          
         </>
       )}
 
@@ -270,6 +260,9 @@ const TourismPredictionsPage: NextPage = () => {
                 src="22985122"
               />
             </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 italic text-center mt-2">
+              Source: Ministry of Tourism, Government of India. Visualization powered by Flourish.
+            </div>
           </ChartCard>
 
           {/* Tourism Forecast Chart 2 */}
@@ -279,6 +272,9 @@ const TourismPredictionsPage: NextPage = () => {
                 key={`forecast-chart2-${chartKey}`}
                 src="22984925"
               />
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 italic text-center mt-2">
+              Source: Ministry of Tourism, Government of India. Visualization powered by Flourish.
             </div>
           </ChartCard>
 

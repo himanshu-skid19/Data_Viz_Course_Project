@@ -8,6 +8,13 @@ interface CarouselItem {
   body: string;
 }
 
+const mapping_link: { [key: string]: string } = {
+  "1": "https://www.holidify.com/country/india/places-to-visit.html#packageModal",
+  "2": "https://www.easemytrip.com/travel/beach-destinations-in-india.html",
+  "3": "https://www.nivabupa.com/travel-insurance-articles/exploring-indias-best-adventure-destinations.html"
+};
+
+
 interface WindmillCarouselProps {
   items: CarouselItem[];
   interval?: number;
@@ -125,6 +132,7 @@ const WindmillCarousel: React.FC<WindmillCarouselProps> = ({
       <div className="h-full">
         {items.map((item, index) => (
           <div
+            //name = {item.title}
             key={item.id}
             className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out ${
               index === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
@@ -141,11 +149,15 @@ const WindmillCarousel: React.FC<WindmillCarouselProps> = ({
             <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-900 bg-opacity-70 text-white p-6 rounded-lg max-w-[80%] text-center">
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               <p className="mb-4">{item.body}</p>
-              <button 
-                className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-colors"
-              >
-                Visit Details
-              </button>
+
+              <a 
+  href={mapping_link[item.id]} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className="inline-block px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
+>
+  Visit Details
+</a>
             </div>
           </div>
         ))}

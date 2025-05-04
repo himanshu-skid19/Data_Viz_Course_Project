@@ -176,9 +176,14 @@ function Dashboard() {
         </ChartCard>
       </div>
       
-      <button className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+      <a 
+        href={"https://www.holidify.com/country/india/places-to-visit.html"} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="inline-block px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
+      >
         Visit Details
-      </button>
+      </a>
     </Layout>
   )
 }
