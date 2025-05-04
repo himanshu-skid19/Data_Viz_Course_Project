@@ -28,7 +28,7 @@ const BootstrapCarousel = dynamic(() => import('../../components/BootstrapCarous
 import IframeFlourishChart from '../../components/FlourishChart'
 
 // Type definitions
-type DemographicsFilterType = 'gender' | 'age' | 'mode';
+type DemographicsFilterType = 'gender' | 'age' | 'mode' | 'purpose';
 
 function Dashboard() {
   // Register Chart.js components
@@ -51,6 +51,7 @@ function Dashboard() {
     gender: '22596350',
     age: '22596141',
     mode: '22596471',
+    purpose: '22473704', // Assuming 'purpose' is the same as 'mode'
   };
 
   // Chart titles
@@ -58,6 +59,7 @@ function Dashboard() {
     gender: 'Gender Distribution of Foreign Tourists',
     age: 'Age Wise Distribution of Tourist Arrivals',
     mode: 'Distribution of Tourists based on Mode of Travel',
+    purpose: 'Purpose of Travel Distribution',
   };
 
   return (
@@ -106,6 +108,16 @@ function Dashboard() {
           onClick={() => setDemographicsFilter('mode')}
         >
           Mode of Travel
+        </button>
+        <button
+          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${
+            demographicsFilter === 'purpose'
+              ? 'bg-purple-600 text-white'
+              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+          }`}
+          onClick={() => setDemographicsFilter('purpose')}
+        >
+          Purpose of Travel
         </button>
       </div>
 
