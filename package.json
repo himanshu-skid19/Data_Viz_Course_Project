@@ -12,6 +12,7 @@
     "bootstrap": "^5.3.5",
     "chart.js": "^3.6.1",
     "classnames": "^2.3.1",
+    "framer-motion": "^6.5.1",
     "next": "^11.1.2",
     "react": "17.0.2",
     "react-bootstrap": "^2.10.9",
@@ -32,5 +33,20 @@
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.22",
     "typescript": "4.4.3"
-  }
+  },
+  "description": "<p align=\"center\">\r     <h1>Windmill Dashboard Next.js Typescript</h1>\r     <a href=\"https://windmill-dashboard-nextjs-typescript.vercel.app/example\">\r       <img alt=\"Windmill Dashboard React\" width=\"600\" src=\".github/windmill-dashboard-thumbnail.jpg\">\r     </a><br>\r </p>",
+  "main": "next.config.js",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himanshu-skid19/Data_Viz_Course_Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/himanshu-skid19/Data_Viz_Course_Project/issues"
+  },
+  "homepage": "https://github.com/himanshu-skid19/Data_Viz_Course_Project#readme"
 }

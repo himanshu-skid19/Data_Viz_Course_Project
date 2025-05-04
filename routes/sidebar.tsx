@@ -31,9 +31,9 @@ const routes: IRoute[] = [
     exact: true,
   },
   {
-    path: '/example/forms',
+    path: '/example/prediction',
     icon: 'FormsIcon',
-    name: 'Forms',
+    name: 'Prediction Model',
   },
   {
     path: '/example/cards',
