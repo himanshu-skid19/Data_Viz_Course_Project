@@ -97,10 +97,54 @@ const TourismPredictionsPage: NextPage = () => {
                   <p className="text-gray-700 dark:text-gray-300">Strong 165.6% rebound in 2022, with projections showing complete recovery by 2024-2025.</p>
                 </div>
               </div>
+
+              {/* Side-by-side India maps: Pre-COVID and Post-COVID */}
+              <h3 className="text-xl font-semibold text-purple-600 dark:text-purple-400 mb-4 mt-6">Tourism Distribution Across India: Before and After COVID-19</h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <Card className="shadow-sm">
+                  <CardBody>
+                    <h4 className="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-2 text-center">Pre-COVID Tourism (2014-2019)</h4>
+                    <div className="relative w-full h-96">
+                      <FlourishChart 
+                        key={`pre-covid-map-${chartKey}`}
+                        src="22989447"
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 italic text-center mt-2">
+                      Domestic tourism distribution across Indian states before COVID-19
+                    </p>
+                  </CardBody>
+                </Card>
+                
+                <Card className="shadow-sm">
+                  <CardBody>
+                    <h4 className="text-lg font-semibold text-red-700 dark:text-red-300 mb-2 text-center">COVID Impact (2020)</h4>
+                    <div className="relative w-full h-96">
+                      <FlourishChart 
+                        key={`covid-map-${chartKey}`}
+                        src="22989316"
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 italic text-center mt-2">
+                      Domestic tourism distribution across Indian states during COVID-19
+                    </p>
+                  </CardBody>
+                </Card>
+              </div>
+              
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                The maps above clearly illustrate the dramatic shift in tourism patterns across India as a result of the COVID-19 pandemic. 
+                While states like Tamil Nadu and Uttar Pradesh maintained their positions as tourism leaders, the overall volume decreased 
+                significantly, with certain states experiencing more severe impacts than others.
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">
+                Our analysis reveals that southern states generally retained a higher percentage of their tourism activity during the 
+                pandemic compared to northern and central regions, likely due to a combination of pandemic severity factors and 
+                regional travel restrictions.
+              </p>
             </CardBody>
           </Card>
-
-          
         </>
       )}
 
